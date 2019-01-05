@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView ob=new WebView(this);
+        WebView ob = new WebView(this);
         ob.getSettings().setJavaScriptEnabled(true);
         ob.loadUrl("https://www.google.com/");
         //opens all link in the same web view instead of the default browser
