@@ -1,12 +1,12 @@
 package com.fat2fit.fat2fitapp;
 
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ob.getSettings().setAppCacheEnabled(true);
         ob.loadUrl("http://10.0.2.2:63343/FAT2FITClient/Login.html");
         ob.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        ob.addJavascriptInterface(new WebAppInterface(this), "Android");
         //opens all link in the same web view instead of the default browser
         ob.setWebViewClient(new WebViewClient() {
             @Override
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
         setContentView(ob);
     }
 }
