@@ -7,11 +7,19 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-
+/**
+ * The only activity, including the web view
+ */
 public class MainActivity extends AppCompatActivity {
 
     WebView webView = null;
 
+    /**
+     * onCreate.
+     * create the view
+     *
+     * @param savedInstanceState the save instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(webView);
     }
 
+    /**
+     * onBackPressed.
+     * cancel the back button functionality
+     */
     @Override
     public void onBackPressed() {
         return;
