@@ -10,10 +10,12 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity {
 
+    WebView webView = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView webView = new WebView(this);
+        webView = new WebView(this);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setAppCacheEnabled(true);
@@ -26,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 view.loadUrl(request.getUrl().toString());
                 return false;
+
             }
         });
         setContentView(webView);
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
+        //the back button does nothing, because the jQuery
     }
 }
