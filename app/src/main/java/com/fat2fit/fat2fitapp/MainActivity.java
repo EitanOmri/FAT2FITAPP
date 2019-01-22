@@ -7,28 +7,48 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-
+/**
+ * The only activity, including the web view
+ */
 public class MainActivity extends AppCompatActivity {
 
+    WebView webView = null;
+
+    /**
+     * onCreate.
+     * create the view
+     *
+     * @param savedInstanceState the save instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView ob = new WebView(this);
-        ob.getSettings().setJavaScriptEnabled(true);
-        ob.getSettings().setAllowFileAccess(true);
-        ob.getSettings().setAppCacheEnabled(true);
-        ob.loadUrl("http://10.0.2.2:63343/FAT2FITClient/Login.html");
-        ob.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-        ob.addJavascriptInterface(new WebAppInterface(this), "Android");
+        webView = new WebView(this);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.loadUrl("http://10.0.2.2:63343/FAT2FITClient/login.html");
+        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        webView.addJavascriptInterface(new WebAppInterface(this), "Android");
         //opens all link in the same web view instead of the default browser
-        ob.setWebViewClient(new WebViewClient() {
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 view.loadUrl(request.getUrl().toString());
                 return false;
+
             }
         });
+        setContentView(webView);
+    }
 
-        setContentView(ob);
+    /**
+     * onBackPressed.
+     * cancel the back button functionality
+     */
+    @Override
+    public void onBackPressed() {
+        return;
+        //the back button does nothing, because the jQuery
     }
 }
