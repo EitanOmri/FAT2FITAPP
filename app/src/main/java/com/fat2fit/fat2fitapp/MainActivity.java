@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setAppCacheEnabled(true);
-        webView.loadUrl("http://10.0.2.2:63343/FAT2FITClient/Login.html");
+        webView.loadUrl("http://10.0.2.2:63343/FAT2FITClient/login.html");
         webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webView.addJavascriptInterface(new WebAppInterface(this), "Android");
         //opens all link in the same web view instead of the default browser
